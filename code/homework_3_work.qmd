@@ -16,4 +16,14 @@ library("gt")
 
 ```
 
+```{r reading in data}
+#read in my biking speed data
+bike_data <- read.csv("C:/Users/arant/Desktop/ENV S 193DS-R/ENVS-193DS_homework-03/data/Biking_Speed_Data.csv")
+
+```
+
+#Problem 1. Personal Data
+##a. 
+
+
 
