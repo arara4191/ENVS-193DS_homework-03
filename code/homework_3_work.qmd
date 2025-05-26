@@ -1,0 +1,19 @@
+---
+title: "Homework 3 work"
+author: "Arantza Lira"
+format: html
+editor: visual
+---
+link to Github: https://github.com/arara4191/ENVS-193DS_homework-03.git 
+
+```{r-loading packages}
+#loading in necessary packages
+
+library("tidyverse")
+library("here")
+library("janitor")
+library("gt")
+
+```
+
+
