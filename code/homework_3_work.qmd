@@ -74,6 +74,35 @@ count(bike_data_clean,music)# (data frame, column)
 
 ##d. 
 
+```{r-summary dataframe and gt table}
+
+#creating the data frame for the gt table
+bike_data_summary <- bike_data_clean %>%
+  group_by(music) %>% #creating groups based on slow/fast music
+  summarize(observations = n(), #counting the number of observations per group
+            average_speed = round(mean(average_biking_speed_mph), digits = 1),#summarizing mean speed of each group
+            max_avg_speed = max(average_biking_speed_mph),# fidning max speed
+            min_avg_speed = min(average_biking_speed_mph)) #finding min speed
+
+#creating gt table 
+gt_bike_data_summary <- gt(bike_data_summary) %>% #creating dataframe to use for gt table display
+  cols_label(  # renaming column names in table to remove underscores
+    music = "Music",
+    observations = "Observations",
+    average_speed = "Average Speed (mph)",
+    max_avg_speed = "Maximum Average Speed(mph)",
+    min_avg_speed = "Minimum Average Speed(mph)"
+  ) %>%
+  tab_header(title = "Bike Speed Summary Statistics")
+  # adding title
+  
+gt_bike_data_summary # displaying table
+
+
+
+```
+
+
 
 
 
