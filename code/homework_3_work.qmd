@@ -42,6 +42,8 @@ bike_data_mean_exp <- bike_data_clean %>%
   summarize(mean_mph = mean(average_biking_speed_mph)) #summarizing mean speed of each group
 
 
+
+
 #creating boxplot to visualize average biking speed based on music
 ggplot(data = bike_data_clean,#creating base plot with cleaned data    
        aes(x = music,             
@@ -52,7 +54,7 @@ ggplot(data = bike_data_clean,#creating base plot with cleaned data
               width = 0.2) + #narrows spread of jitter along x-axis
   labs( x = "Music",
         y = "Average Biking Speed (mph)",
-        title = "Relationship between Music and Biking Speed(mph)") +
+        title = "Relationship Between Music Type and Biking Speed (mph)") +
   geom_point() +
   scale_fill_manual(values = c("fast" = "red", 
                                 "slow" = "pink"))+ # manually changing colors
@@ -61,6 +63,17 @@ ggplot(data = bike_data_clean,#creating base plot with cleaned data
 
 
 ```
+
+##c. 
+```{r}
+# using count function to see the number of values for each type of music
+count(bike_data_clean,music)# (data frame, column)
+```
+
+**Figure 1.Faster recorded biking speeds associated with fast music** Data of biking rides collected from the Strava app using miles per hour. Points represent average biking speed of each bike ride with fast(n = 18) or slow music(n = 12). Colors represent music types in the boxplots(fast = red, slow = pink). Fast music has higher recorded average biking speeds with a higher mean, but its distribution still overlaps with the slow biking speed distribution. 
+
+##d. 
+
 
 
 
