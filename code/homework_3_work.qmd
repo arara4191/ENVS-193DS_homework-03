@@ -3,6 +3,9 @@ title: "Homework 3 work"
 author: "Arantza Lira"
 format: html
 editor: visual
+resources:
+  - ../media/affectsketch.jpg
+  - ../media/affectpic.jpg
 ---
 link to Github: https://github.com/arara4191/ENVS-193DS_homework-03.git 
 
@@ -20,9 +23,9 @@ library("gt")
 #read in my biking speed data
 #use here package to ensure reproducibility of the code
 
-bike_data <- read_csv(here("data", "Biking_Speed_Data.csv"))
+#bike_data <- read_csv(here("data", "Biking_Speed_Data.csv"))
 
-
+bike_data <- read.csv("C:/Users/arant/Desktop/ENV S 193DS-R/ENVS-193DS_homework-03/data/Biking_Speed_Data.csv")
 ```
 
 #Problem 1. Personal Data
@@ -34,6 +37,9 @@ I can group my biking trips into trips where I listened to fast or slow music an
 ##b. 
 
 ```{r}
+library("janitor")
+library("tidyverse")
+
 #cleaning bike data column names
 bike_data_clean <- clean_names(bike_data)
 
@@ -106,7 +112,17 @@ gt_bike_data_summary # displaying table
 
 ##a. 
 
-For my affective visualization I was inspired by the postcards sent between Stefanie and Giorgia and how they brought their own everyday art and doodle into play. For my project I thought it would be fun to resemble a wheel of a bike by splitting a circle into seven different shapes for everyday of the week and splitting the data into the respective day they were collected in. This would allow me to see the days I recorder/biked the most. Within the slices, pink circles depict fast music bikes while green depict slow music days, orange dots around the circle represent biking at noon or before, and a blue spiral outside the circle means it was windy that day. The smaller and less lines inside a circle represent slower biking speeds while bigger circles with more lines represent faster speeds.
+For my affective visualization I was inspired by the postcards sent between Stefanie and Giorgia and how they brought their own everyday art and doodles into play. For my project I thought it would be fun to use watercolors(do not currently have them at home) to resemble a wheel of a bike by splitting a circle into seven different shapes for everyday of the week and splitting the data into the respective day they were collected in. This would allow me to see the days I recorder/biked the most. Within the slices, pink circles depict fast music bikes while green depict slow music days, orange dots around the circle represent biking at noon or before, and a blue spiral outside the circle means it was windy that day. The smaller and less lines inside a circle represent slower biking speeds while bigger circles with more lines represent faster speeds.
+
+##b. 
+
+![sketch](../media/affectsketch.jpg)
+
+##c. 
+![sketch](../media/affectpic.jpg)
+
+
+
 
 
 
