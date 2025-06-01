@@ -26,6 +26,7 @@ bike_data <- read_csv(here("data", "Biking_Speed_Data.csv"))
 ```
 
 #Problem 1. Personal Data
+
 ##a. 
 
 I can group my biking trips into trips where I listened to fast or slow music and find the average biking speed (mph) of each group. Since fast music usually gives me more energy, I think this might translate to biking faster when the music is faster.
@@ -99,8 +100,16 @@ gt_bike_data_summary <- gt(bike_data_summary) %>% #creating dataframe to use for
 gt_bike_data_summary # displaying table
 
 
-
 ```
+
+#Problem 2. Affective Visulization
+
+##a. 
+
+For my affective visualization I was inspired by the postcards sent between Stefanie and Giorgia and how they brought their own everyday art and doodle into play. For my project I thought it would be fun to resemble a wheel of a bike by splitting a circle into seven different shapes for everyday of the week and splitting the data into the respective day they were collected in. This would allow me to see the days I recorder/biked the most. Within the slices, pink circles depict fast music bikes while green depict slow music days, orange dots around the circle represent biking at noon or before, and a blue spiral outside the circle means it was windy that day. The smaller and less lines inside a circle represent slower biking speeds while bigger circles with more lines represent faster speeds.
+
+
+
 
 
 
