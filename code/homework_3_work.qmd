@@ -120,6 +120,16 @@ For my affective visualization I was inspired by the postcards sent between Stef
 
 ##c. 
 ![sketch](../media/affectpic.jpg)
+##d. 
+
+In this piece I am showing each bike ride I took this quarter. A ride will be represented by a circle with different colors(fast music = pink, slow music = green), sizes(smaller = less mph, bigger = higher mph), and shapes(orange dots represent before noon and spirals represent windy days).
+I was influences by the dear data project and the way Stefanie and Giorgia incorporated hand drawn doodles into their pieces.
+Following the colorful nature of their work, this piece will be created using watercolors and markers.
+I created this piece by trying to resemble the wheels of bikes split by the wire structures and filling the slices by smaller wheel like shapes. This was done using markers and color pencils but in the future, watercolors will be used.
+
+
+
+
 
 
 
