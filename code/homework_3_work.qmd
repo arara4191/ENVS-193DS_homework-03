@@ -140,7 +140,13 @@ In figure 6 titled "Effects of Typha angustifolia biochar produced at different 
 
 ##b. 
 
-Although the visualization does not show summary statistics such as the mean or SE, I think it still does a great job at showing the results of the experiment. This paper observed 5 different response variables with three types of predictor variables that each had 3 subgroups. Being able to depict these results in bar graphs was a good choice in my opinion as it gives a broad overview of the abundant data. I like that each plot has its own color and is subdivided by the predictor variables and quantities in the x - axis.Having shown this in graphs would not have been as easy to understand and the labels were clean and simple. Having each plot be a different color was a good call since any more subdivisions by color would have been too overwhelming. It was also easy to understand after skimming the paper and did not have to rely on the caption to clarify.
+Although the visualization does not show summary statistics such as the mean or SE, I think it still does a great job at showing the results of the experiment since it dealt with abundant data depicting 5 different response variables with three types of predictor variables that each had 3 subgroups. I like that each plot has its own color and is subdivided by the predictor variables and quantities in the x - axis. Having each plot be a different color was a good call since any more subdivisions by color would have been too overwhelming and distracting from the data.
+
+##c. 
+
+I think the authors handled visual clutter well. I would have liked if they reiterated the y-axis labels on top of each individual chart to make it easier for readers to find the predictor variable they are interested in. Aside from that, as I've said before, they made good use of adding layered labels to the x- axis's that are easy to understand and well organized. 
+
+
 
 
 
