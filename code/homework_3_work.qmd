@@ -146,6 +146,10 @@ Although the visualization does not show summary statistics such as the mean or 
 
 I think the authors handled visual clutter well. I would have liked if they reiterated the y-axis labels on top of each individual chart to make it easier for readers to find the predictor variable they are interested in. Aside from that, as I've said before, they made good use of adding layered labels to the x- axis's that are easy to understand and well organized. 
 
+##d. 
+
+My main recommendation would be to reiterate the predictor variable for each plot at the top instead of just writing it on the y axis to make it easier to find and compare. I would also like to see an additional visualization that compares the overall results of each type of biochar amendment(grouping each biochar subdivision) to see which out of all of them brought the most benefits. This could take the form of a bar chart that showes which amendment created the biggest collective plant weight between the five predictor variables observed. 
+
 
 
 
