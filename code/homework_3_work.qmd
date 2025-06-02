@@ -127,6 +127,16 @@ I was influences by the dear data project and the way Stefanie and Giorgia incor
 Following the colorful nature of their work, this piece will be created using watercolors and markers.
 I created this piece by trying to resemble the wheels of bikes split by the wire structures and filling the slices by smaller wheel like shapes. This was done using markers and color pencils but in the future, watercolors will be used.
 
+#Problem 3. Statistical Critique
+
+##a.
+
+The experimental data were analyzed to estimate mean values and standard deviations through ANOVA. The ANOVA test addresses the main questions posed by the authors by being able to understand if there is a significant difference between different pyrolysis temperature biochar groups and its application rate in relation to soil properties and Okra growth compared to a control group with no biochar.
+
+In figure 6 titled "Effects of Typha angustifolia biochar produced at different temperatures on okra plant production" it can be seen the x-axis shows the control group, the different kinds of biochar treatments and the application rates. the y-axis demonstrates the different plant measurements such as fruit yield, plant dry biomass, height, chloropyll, fruit weight. This figure shows the relationship between the biochar treatments and the Okra plant production parameters using the results of Duncan's multiple range test.
+
+
+![sketch](../media/cattails_anova.png)
 
 
 
