@@ -195,46 +195,536 @@ Attaching package: 'janitor'</code></pre>
 </div>
 <p><strong>Figure 1.Faster recorded biking speeds associated with fast music</strong> Data of biking rides collected from the Strava app using miles per hour. Points represent average biking speed of each bike ride with fast(n = 18) or slow music(n = 12). Colors represent music types in the boxplots(fast = red, slow = pink). Fast music has higher recorded average biking speeds with a higher mean, but its distribution still overlaps with the slow biking speed distribution.</p>
 <p>##d.&nbsp;</p>
-<pre class="{r-summary dataframe and gt table}"><code>
-#creating the data frame for the gt table
-bike_data_summary &lt;- bike_data_clean %&gt;%
-  group_by(music) %&gt;% #creating groups based on slow/fast music
-  summarize(observations = n(), #counting the number of observations per group
-            average_speed = round(mean(average_biking_speed_mph), digits = 1),#summarizing mean speed of each group
-            max_avg_speed = max(average_biking_speed_mph),# fidning max speed
-            min_avg_speed = min(average_biking_speed_mph)) #finding min speed
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co">#creating the data frame for the gt table</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>bike_data_summary <span class="ot">&lt;-</span> bike_data_clean <span class="sc">%&gt;%</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(music) <span class="sc">%&gt;%</span> <span class="co">#creating groups based on slow/fast music</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">observations =</span> <span class="fu">n</span>(), <span class="co">#counting the number of observations per group</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">average_speed =</span> <span class="fu">round</span>(<span class="fu">mean</span>(average_biking_speed_mph), <span class="at">digits =</span> <span class="dv">1</span>),<span class="co">#summarizing mean speed of each group</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">max_avg_speed =</span> <span class="fu">max</span>(average_biking_speed_mph),<span class="co"># fidning max speed</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">min_avg_speed =</span> <span class="fu">min</span>(average_biking_speed_mph)) <span class="co">#finding min speed</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="co">#creating gt table </span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>gt_bike_data_summary <span class="ot">&lt;-</span> <span class="fu">gt</span>(bike_data_summary) <span class="sc">%&gt;%</span> <span class="co">#creating dataframe to use for gt table display</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_label</span>(  <span class="co"># renaming column names in table to remove underscores</span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">music =</span> <span class="st">"Music"</span>,</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">observations =</span> <span class="st">"Observations"</span>,</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">average_speed =</span> <span class="st">"Average Speed (mph)"</span>,</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">max_avg_speed =</span> <span class="st">"Maximum Average Speed(mph)"</span>,</span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">min_avg_speed =</span> <span class="st">"Minimum Average Speed(mph)"</span></span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(<span class="at">title =</span> <span class="st">"Bike Speed Summary Statistics"</span>)</span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>  <span class="co"># adding title</span></span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>gt_bike_data_summary <span class="co"># displaying table</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="otipzjlmoi" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#otipzjlmoi table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
-#creating gt table 
-gt_bike_data_summary &lt;- gt(bike_data_summary) %&gt;% #creating dataframe to use for gt table display
-  cols_label(  # renaming column names in table to remove underscores
-    music = "Music",
-    observations = "Observations",
-    average_speed = "Average Speed (mph)",
-    max_avg_speed = "Maximum Average Speed(mph)",
-    min_avg_speed = "Minimum Average Speed(mph)"
-  ) %&gt;%
-  tab_header(title = "Bike Speed Summary Statistics")
-  # adding title
-  
-gt_bike_data_summary # displaying table
+#otipzjlmoi thead, #otipzjlmoi tbody, #otipzjlmoi tfoot, #otipzjlmoi tr, #otipzjlmoi td, #otipzjlmoi th {
+  border-style: none;
+}
 
-</code></pre>
+#otipzjlmoi p {
+  margin: 0;
+  padding: 0;
+}
+
+#otipzjlmoi .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#otipzjlmoi .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#otipzjlmoi .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#otipzjlmoi .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#otipzjlmoi .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#otipzjlmoi .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#otipzjlmoi .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#otipzjlmoi .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#otipzjlmoi .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#otipzjlmoi .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#otipzjlmoi .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#otipzjlmoi .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#otipzjlmoi .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#otipzjlmoi .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#otipzjlmoi .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#otipzjlmoi .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#otipzjlmoi .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#otipzjlmoi .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#otipzjlmoi .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#otipzjlmoi .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#otipzjlmoi .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#otipzjlmoi .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#otipzjlmoi .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#otipzjlmoi .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#otipzjlmoi .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#otipzjlmoi .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#otipzjlmoi .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#otipzjlmoi .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#otipzjlmoi .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#otipzjlmoi .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#otipzjlmoi .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#otipzjlmoi .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#otipzjlmoi .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#otipzjlmoi .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#otipzjlmoi .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#otipzjlmoi .gt_left {
+  text-align: left;
+}
+
+#otipzjlmoi .gt_center {
+  text-align: center;
+}
+
+#otipzjlmoi .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#otipzjlmoi .gt_font_normal {
+  font-weight: normal;
+}
+
+#otipzjlmoi .gt_font_bold {
+  font-weight: bold;
+}
+
+#otipzjlmoi .gt_font_italic {
+  font-style: italic;
+}
+
+#otipzjlmoi .gt_super {
+  font-size: 65%;
+}
+
+#otipzjlmoi .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#otipzjlmoi .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#otipzjlmoi .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#otipzjlmoi .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#otipzjlmoi .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#otipzjlmoi .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#otipzjlmoi .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#otipzjlmoi .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#otipzjlmoi div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_heading header">
+<th colspan="5" class="gt_heading gt_title gt_font_normal gt_bottom_border">Bike Speed Summary Statistics</th>
+</tr>
+<tr class="gt_col_headings even">
+<th id="music" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Music</th>
+<th id="observations" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Observations</th>
+<th id="average_speed" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Average Speed (mph)</th>
+<th id="max_avg_speed" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Maximum Average Speed(mph)</th>
+<th id="min_avg_speed" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Minimum Average Speed(mph)</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="music">fast</td>
+<td class="gt_row gt_right" headers="observations">18</td>
+<td class="gt_row gt_right" headers="average_speed">11.5</td>
+<td class="gt_row gt_right" headers="max_avg_speed">22.0</td>
+<td class="gt_row gt_right" headers="min_avg_speed">8.2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="music">slow</td>
+<td class="gt_row gt_right" headers="observations">12</td>
+<td class="gt_row gt_right" headers="average_speed">10.9</td>
+<td class="gt_row gt_right" headers="max_avg_speed">13.5</td>
+<td class="gt_row gt_right" headers="min_avg_speed">9.6</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
 <p>#Problem 2. Affective Visulization</p>
 <p>##a.</p>
 <p>For my affective visualization I was inspired by the postcards sent between Stefanie and Giorgia and how they brought their own everyday art and doodles into play. For my project I thought it would be fun to use watercolors(do not currently have them at home) to resemble a wheel of a bike by splitting a circle into seven different shapes for everyday of the week and splitting the data into the respective day they were collected in. This would allow me to see the days I recorder/biked the most. Within the slices, pink circles depict fast music bikes while green depict slow music days, orange dots around the circle represent biking at noon or before, and a blue spiral outside the circle means it was windy that day. The smaller and less lines inside a circle represent slower biking speeds while bigger circles with more lines represent faster speeds.</p>
 <p>##b.</p>
-<p>#<img src="C:/Users/arant/Desktop/ENV%20S%20193DS-R/ENVS-193DS_homework-03/media/affectsketch.jpg" class="img-fluid"></p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../media/affectsketch.jpg" class="img-fluid figure-img"></p>
-<figcaption>sketch</figcaption>
-</figure>
-</div>
+<p><img src="affectsketch.jpg" class="img-fluid"></p>
 <p>##c.&nbsp;</p>
-<p>add draft</p>
+<p><img src="affectpic.jpg" class="img-fluid"></p>
 <p>##d.&nbsp;</p>
-<p>the content of your piece (what are you showing?) the influences (what did techniques/artists/etc. did you find influential in creating your work?) the form of your work (written code, watercolor, oil painting, etc.) your process (how did you create your work?)</p>
-<p>In this watercolor visualization I’m using a sliced circle shape to resemble the wheel of a bike and using the seven slices to represent a day of the week in which smaller wheels with different colors, sizes and designs are organized to represent data from that bike ride. I drew inspiration from the hand drawn work of the dear data project that embraced incorporating doodles into their data visualizations.</p>
+<p>In this piece I am showing each bike ride I took this quarter. A ride will be represented by a circle with different colors(fast music = pink, slow music = green), sizes(smaller = less mph, bigger = higher mph), and shapes(orange dots represent before noon and spirals represent windy days). I was influences by the dear data project and the way Stefanie and Giorgia incorporated hand drawn doodles into their pieces. Following the colorful nature of their work, this piece will be created using watercolors and markers. I created this piece by trying to resemble the wheels of bikes split by the wire structures and filling the slices by smaller wheel like shapes. This was done using markers and color pencils but in the future, watercolors will be used.</p>
+<p>#Problem 3. Statistical Critique</p>
+<p>##a.</p>
+<p>The experimental data were analyzed to estimate mean values and standard deviations through ANOVA. The ANOVA test addresses the main questions posed by the authors by being able to understand if there is a significant difference between different pyrolysis temperature biochar groups and its application rate in relation to soil properties and Okra growth compared to a control group with no biochar.</p>
+<p>In figure 6 titled “Effects of Typha angustifolia biochar produced at different temperatures on okra plant production” it can be seen the x-axis shows the control group, the different kinds of biochar treatments and the application rates. the y-axis demonstrates the different plant measurements such as fruit yield, plant dry biomass, height, chloropyll, fruit weight. This figure shows the relationship between the biochar treatments and the Okra plant production parameters using the results of Duncan’s multiple range test.</p>
+<p><img src="cattails_anova.png" class="img-fluid"></p>
+<p>##b.</p>
+<p>Although the visualization does not show summary statistics such as the mean or SE, I think it still does a great job at showing the results of the experiment since it dealt with abundant data depicting 5 different response variables with three types of predictor variables that each had 3 subgroups. I like that each plot has its own color and is subdivided by the predictor variables and quantities in the x - axis. Having each plot be a different color was a good call since any more subdivisions by color would have been too overwhelming and distracting from the data.</p>
+<p>##c.&nbsp;</p>
+<p>I think the authors handled visual clutter well. I would have liked if they reiterated the y-axis labels on top of each individual chart to make it easier for readers to find the predictor variable they are interested in. Aside from that, as I’ve said before, they made good use of adding layered labels to the x- axis’s that are easy to understand and well organized.</p>
+<p>##d.&nbsp;</p>
+<p>My main recommendation would be to reiterate the predictor variable for each plot at the top instead of just writing it on the y axis to make it easier to find and compare. I would also like to see an additional visualization that compares the overall results of each type of biochar amendment(grouping each biochar subdivision) to see which out of all of them brought the most benefits. This could take the form of a bar chart that showes which amendment created the biggest collective plant weight between the five predictor variables observed.</p>
 
 </main>
 <!-- /main column -->

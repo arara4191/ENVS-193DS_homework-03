@@ -3,9 +3,7 @@ title: "Homework 3 work"
 author: "Arantza Lira"
 format: html
 editor: visual
-resources:
-  - ../media/affectsketch.jpg
-  - ../media/affectpic.jpg
+
 ---
 link to Github: https://github.com/arara4191/ENVS-193DS_homework-03.git 
 
@@ -21,9 +19,6 @@ library("gt")
 
 ```{r reading in data}
 #read in my biking speed data
-#use here package to ensure reproducibility of the code
-
-#bike_data <- read_csv(here("data", "Biking_Speed_Data.csv"))
 
 bike_data <- read.csv("C:/Users/arant/Desktop/ENV S 193DS-R/ENVS-193DS_homework-03/data/Biking_Speed_Data.csv")
 ```
@@ -81,7 +76,10 @@ count(bike_data_clean,music)# (data frame, column)
 
 ##d. 
 
-```{r-summary dataframe and gt table}
+```{r summary-dataframe-and-gt-table, echo=TRUE, message=FALSE, warning=FALSE}
+
+library(gt)
+
 
 #creating the data frame for the gt table
 bike_data_summary <- bike_data_clean %>%
@@ -116,10 +114,12 @@ For my affective visualization I was inspired by the postcards sent between Stef
 
 ##b. 
 
-![sketch](../media/affectsketch.jpg)
+![](affectsketch.jpg)
 
 ##c. 
-![sketch](../media/affectpic.jpg)
+
+![](affectpic.jpg)
+
 ##d. 
 
 In this piece I am showing each bike ride I took this quarter. A ride will be represented by a circle with different colors(fast music = pink, slow music = green), sizes(smaller = less mph, bigger = higher mph), and shapes(orange dots represent before noon and spirals represent windy days).
@@ -136,7 +136,7 @@ The experimental data were analyzed to estimate mean values and standard deviati
 In figure 6 titled "Effects of Typha angustifolia biochar produced at different temperatures on okra plant production" it can be seen the x-axis shows the control group, the different kinds of biochar treatments and the application rates. the y-axis demonstrates the different plant measurements such as fruit yield, plant dry biomass, height, chloropyll, fruit weight. This figure shows the relationship between the biochar treatments and the Okra plant production parameters using the results of Duncan's multiple range test.
 
 
-![sketch](../media/cattails_anova.png)
+![](cattails_anova.png)
 
 ##b. 
 
